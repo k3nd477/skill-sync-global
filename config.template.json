@@ -1,0 +1,6 @@
+{
+  "skillsDirectory": "~/.claude/skills",
+  "remoteName": "origin",
+  "branch": "main",
+  "continueOnError": true
+}
