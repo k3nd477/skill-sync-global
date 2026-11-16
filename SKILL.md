@@ -1,7 +1,7 @@
 ---
 name: sync-global-skills
 description: Pull the latest changes from all global skill repositories in ~/.claude/skills/
-model: claude-haiku-4-5-20251001
+model: haiku
 allowed-tools: Bash
 ---
 
@@ -14,7 +14,7 @@ Pull the latest changes from all skill repositories in your global ~/.claude/ski
 1. **List all skill directories**: Use Bash to list all directories in `~/.claude/skills/`
 
 2. **Iterate through each directory and pull updates**:
-   - For each directory that is a git repository, run: `git pull origin main`
+   - For each directory that is a git repository, run: `git pull` (pulls whatever branch the repo tracks, so repos whose default branch isn't `main` still work)
    - Skip non-git directories (they're not repositories)
    - Catch and continue on pull errors
 
@@ -47,6 +47,6 @@ Present results in a clear summary format:
 ## Implementation Notes
 
 - The global skills directory is `~/.claude/skills/` (expands to the user's home directory)
-- Pull from `origin main` branch for all repositories
+- Use plain `git pull`, not `git pull origin main`: each repo pulls its own tracked upstream branch
 - Use `git status` or `git pull` output to determine if updates were made
 - Continue processing all skills even if some fail
